@@ -8,19 +8,17 @@ import defaultStyles from "../config/styles";
 
 export default function AppTextInput({ icon, ...otherProps }) {
   return (
-    <Screen>
-      <View style={styles.container}>
-        {icon && (
-          <MaterialCommunityIcons
-            name={icon}
-            size={25}
-            color={colors.medium}
-            style={styles.icon}
-          />
-        )}
-        <TextInput style={defaultStyles.text} {...otherProps} />
-      </View>
-    </Screen>
+    <View style={styles.container}>
+      {icon && (
+        <MaterialCommunityIcons
+          name={icon}
+          size={25}
+          color={colors.medium}
+          style={styles.icon}
+        />
+      )}
+      <TextInput style={defaultStyles.text} {...otherProps} />
+    </View>
   );
 }
 

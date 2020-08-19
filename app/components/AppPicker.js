@@ -14,10 +14,10 @@ export default function AppPicker({
   placeholder,
   selectedItem,
 }) {
-  const [modelVisible, setmodelVisible] = useState(false);
+  const [modelVisible, setModelVisible] = useState(false);
   return (
     <>
-      <TouchableWithoutFeedback onPress={() => setmodelVisible(true)}>
+      <TouchableWithoutFeedback onPress={() => setModelVisible(true)}>
         <View style={styles.container}>
           {icon && (
             <MaterialCommunityIcons
@@ -39,16 +39,17 @@ export default function AppPicker({
       </TouchableWithoutFeedback>
       <Modal visible={modelVisible} animationType="slide">
         <Screen>
-          <Button title="Close" onPress={() => setmodelVisible(false)} />
+          <Button title="Close" onPress={() => setModelVisible(false)} />
           <FlatList
             data={items}
-            keyExtractor={(item) => item.id}
+            keyExtractor={(item) => item.id.toString()}
             renderItem={({ item }) => (
               <PickerItem
                 label={item.label}
                 onPress={() => {
-                  setmodelVisible(false);
-                  onSelectedItem(item.label);
+                  console.log(item);
+                  setModelVisible(false);
+                  onSelectedItem(item);
                 }}
               />
             )}

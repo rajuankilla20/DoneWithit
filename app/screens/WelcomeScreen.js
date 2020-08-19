@@ -11,7 +11,7 @@ function WelcomeScreen(props) {
     >
       <View style={styles.logoContainer}>
         <Image
-          source={require("../assets/donewithit.png")}
+          source={require("../assets/donewithit-logo.png")}
           style={styles.logo}
         />
         <Text style={styles.tagline}> Sell what you Don't Need </Text>
