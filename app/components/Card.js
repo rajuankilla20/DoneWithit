@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, Text, View, Image } from "react-native";
-import AppText from "./AppText";
+import AppText from "./Text";
 import colors from "../config/colors";
 
 export default function Card({ title, subTitle, image }) {

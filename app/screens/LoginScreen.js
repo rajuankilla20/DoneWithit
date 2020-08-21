@@ -3,7 +3,7 @@ import { StyleSheet, Image } from "react-native";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import Screen from "../components/Screen";
-import { AppForm, AppFormField, SubmitButton } from "../components/forms";
+import { AppForm as Form, FormField, SubmitButton } from "../components/forms";
 const validationSchema = Yup.object().shape({
   email: Yup.string().required().email().label("Email"),
   password: Yup.string().required().min(4).label("Password"),
@@ -16,12 +16,12 @@ export default function LoginScreen() {
         style={styles.logo}
         source={require("../assets/donewithit-logo.png")}
       />
-      <AppForm
+      <Form
         initialValues={{ email: "", password: "" }}
         onSubmit={(values) => console.log(values)}
         validationSchema={validationSchema}
       >
-        <AppFormField
+        <FormField
           icon="email"
           placeholder="Email"
           autoCapitalize="none"
@@ -31,7 +31,7 @@ export default function LoginScreen() {
           name="email"
         />
 
-        <AppFormField
+        <FormField
           icon="lock"
           placeholder="Password"
           autoCapitalize="none"
@@ -41,7 +41,7 @@ export default function LoginScreen() {
           textContentType="password"
         />
         <SubmitButton title="Login" />
-      </AppForm>
+      </Form>
     </Screen>
   );
 }

@@ -1,6 +1,6 @@
 import React from "react";
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
-import AppText from "./AppText";
+import { StyleSheet, TouchableOpacity } from "react-native";
+import AppText from "./Text";
 
 export default function PickerItem({ item, onPress }) {
   return (
