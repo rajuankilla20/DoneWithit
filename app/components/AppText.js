@@ -1,24 +1,17 @@
 import React from "react";
-import { StyleSheet, Text, Platform } from "react-native";
+import { Text } from "react-native";
+import defaultStyles from "../config/styles";
 
-function AppText({ children, style }) {
-  return <Text style={[styles.text, style]}> {children}</Text>;
+function AppText({ children, style, ...otherProps }) {
+  return (
+    <Text
+      placeholderTextColor={defaultStyles.colors.medium}
+      style={[defaultStyles.text, style]}
+      {...otherProps}
+    >
+      {children}
+    </Text>
+  );
 }
-
-const styles = StyleSheet.create({
-  text: {
-    color: "dodgerblue",
-    ...Platform.select({
-      ios: {
-        fontSize: 9,
-        fontFamily: "Avenir",
-      },
-      andriod: {
-        fontSize: 9,
-        fontFamily: "Roboto",
-      },
-    }),
-  },
-});
 
 export default AppText;
