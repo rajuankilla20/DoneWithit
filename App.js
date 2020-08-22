@@ -18,30 +18,20 @@ import Screen from "./app/components/Screen";
 import colors from "./app/config/colors";
 import ImageInput from "./app/components/ImageInput";
 import ImageInputList from "./app/components/ImageInputList";
+import ListingEditScreen from "./app/screens/ListingEditScreen";
 
 export default function App() {
   console.log("app executed");
-  const [imageUris, setImageUris] = useState([]);
-  const handleAdd = (uri) => {
-    setImageUris([...imageUris, uri]);
-  };
+  // const [imageUris, setImageUris] = useState([]);
+  // const handleAdd = (uri) => {
+  //   setImageUris([...imageUris, uri]);
+  // };
 
-  const handleRemove = (uri) => {
-    setImageUris(imageUris.filter((imageUri) => imageUri !== uri));
-  };
+  // const handleRemove = (uri) => {
+  //   setImageUris(imageUris.filter((imageUri) => imageUri !== uri));
+  // };
 
-  return (
-    <Screen>
-      {/* <Button title="Selec Image" onPress={selectImage} />
-      <Image source={{ uri: imageUri }} style={{ width: 200, height: 200 }} /> */}
-      <ImageInputList
-        imageUris={imageUris}
-        onChangeImage={(uri) => setImageUris(uri)}
-        onAddImage={handleAdd}
-        onRemoveImage={handleRemove}
-      />
-    </Screen>
-  );
+  return <ListingEditScreen />;
 }
 
 const styles = StyleSheet.create({
