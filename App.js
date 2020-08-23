@@ -12,6 +12,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import Text from "./app/components/Text";
 import Button from "./app/components/Button";
+import AuthNavigator from "./app/navigation/AuthNavigator";
 const Link = () => {
   const navigation = useNavigation();
   return (
@@ -93,7 +94,7 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <TabNavigator />
+      <AuthNavigator />
     </NavigationContainer>
   );
 }
