@@ -1,18 +1,17 @@
-import React from "react";
-import { createStackNavigator } from "@react-navigation/stack";
-import {
-  createTablNavigator,
-  createBottomTabNavigator,
-} from "@react-navigation/bottom-tabs";
-import { NavigationContainer, useNavigation } from "@react-navigation/native";
-import colors from "./app/config/colors";
-import Screen from "./app/components/Screen";
-import { StyleSheet } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { NavigationContainer, useNavigation } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+import React from "react";
+import { StyleSheet } from "react-native";
 
-import Text from "./app/components/Text";
 import Button from "./app/components/Button";
-import AuthNavigator from "./app/navigation/AuthNavigator";
+import Screen from "./app/components/Screen";
+import Text from "./app/components/Text";
+import colors from "./app/config/colors";
+import AppNavigator from "./app/navigation/AppNavigator";
+import navigationTheme from "./app/navigation/navigationTheme";
+
 const Link = () => {
   const navigation = useNavigation();
   return (
@@ -93,8 +92,8 @@ export default function App() {
   console.log("app executed");
 
   return (
-    <NavigationContainer>
-      <AuthNavigator />
+    <NavigationContainer theme={navigationTheme}>
+      <AppNavigator />
     </NavigationContainer>
   );
 }
