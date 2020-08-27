@@ -3,7 +3,12 @@ import * as Yup from "yup";
 
 import { StyleSheet, Text, View } from "react-native";
 import Screen from "../components/Screen";
-import { Form, FormField, FormPicker, SubmitButton } from "../components/forms";
+import {
+  Form,
+  FormField,
+  FormPicker as Picker,
+  SubmitButton,
+} from "../components/forms";
 import CategoryPickerItem from "../components/CategoryPickerItem";
 import FormImagePicker from "../components/forms/FormImagePicker";
 import listingApi from "../api/listings";
@@ -96,7 +101,7 @@ export default function ListingEditScreen() {
   };
 
   return (
-    <Screen>
+    <Screen style={styles.container}>
       <UploadScreen
         onDone={() => setUploadVisible(false)}
         progress={progress}
@@ -120,19 +125,22 @@ export default function ListingEditScreen() {
           placeholder="Price"
           keyboardType="numeric"
           maxLength={8}
+          width={120}
         />
-        <FormPicker
+        <Picker
           items={categories}
           numberOfColumns={3}
           PickerItemComponent={CategoryPickerItem}
           name="category"
           placeholder="Category"
+          width="50%"
         />
         <FormField
-          name="description"
-          placeholder="Description"
           maxLength={255}
+          multiline
+          name="description"
           numberOfLines={3}
+          placeholder="Description"
         />
         <SubmitButton title="Post" />
       </Form>
@@ -140,4 +148,8 @@ export default function ListingEditScreen() {
   );
 }
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {
+    padding: 10,
+  },
+});
