@@ -20,6 +20,9 @@
     "web": {
       "favicon": "app/assets/favicon.png"
     },
-    "description": "Market place for selling unwanted items"
+    "description": "Market place for selling unwanted items",
+    "notification": {
+      "iosDisplayInForeground": true
+    }
   }
 }

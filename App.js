@@ -1,7 +1,8 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { AppLoading } from "expo";
 import React, { useState } from "react";
-import { StyleSheet } from "react-native";
+import { StyleSheet, Button } from "react-native";
+import { Notifications } from "expo";
 
 import AuthContext from "./app/auth/context";
 import authStorage from "./app/auth/storage";
@@ -10,6 +11,8 @@ import colors from "./app/config/colors";
 import AppNavigator from "./app/navigation/AppNavigator";
 import AuthNavigator from "./app/navigation/AuthNavigator";
 import navigationTheme from "./app/navigation/navigationTheme";
+import { navigationRef } from "./app/navigation/rootNavigation";
+import Screen from "./app/components/Screen";
 
 export default function App() {
   console.log("app executed");
@@ -31,10 +34,32 @@ export default function App() {
   //   restoreToken();
   // }, []);
 
+  const showNotifications = () => {
+    // Notifications.presentLocalNotificationAsync({
+    //   title: "Congratulations",
+    //   body: "Your order was successfully placed",
+    //   data: {
+    //     _displayInForeground: true,
+    //   },
+    // });
+    // to send scheduled notifications
+    Notifications.scheduleLocalNotificationAsync(
+      {
+        title: "Congratulations",
+        body: "Your order was successfully placed",
+      },
+      {
+        time: new Date().getTime() + 2000,
+      }
+    );
+  };
   return (
+    // <Screen>
+    //   <Button title="Tap me" onPress={showNotifications} />
+    // </Screen>
     <AuthContext.Provider value={{ user, setUser }}>
       <OfflineNotice />
-      <NavigationContainer theme={navigationTheme}>
+      <NavigationContainer ref={navigationRef} theme={navigationTheme}>
         {user ? <AppNavigator /> : <AuthNavigator />}
       </NavigationContainer>
     </AuthContext.Provider>

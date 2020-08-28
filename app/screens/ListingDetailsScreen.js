@@ -1,19 +1,32 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import {
+  View,
+  StyleSheet,
+  KeyboardAvoidingView,
+  Platform,
+  Keyboard,
+} from "react-native";
 import { Image } from "react-native-expo-image-cache";
-import Text from "../components/Text";
-import colors from "../config/colors";
-import ListItem from "../components/lists/ListItem";
 
-export default function ListingDetailsScreen({ route }) {
+import colors from "../config/colors";
+import ContactSellerForm from "../components/ContactSellerForm";
+import ListItem from "../components/lists/ListItem";
+import Text from "../components/Text";
+import { TouchableWithoutFeedback } from "react-native-gesture-handler";
+
+function ListingDetailsScreen({ route }) {
   const listing = route.params;
+
   return (
-    <View>
+    <KeyboardAvoidingView
+      behavior="position"
+      keyboardVerticalOffset={Platform.OS === "ios" ? 0 : 100}
+    >
       <Image
         style={styles.image}
-        uri={listing.images[0].url}
-        tint="light"
         preview={{ uri: listing.images[0].thumbnailUrl }}
+        tint="light"
+        uri={listing.images[0].url}
       />
       <View style={styles.detailsContainer}>
         <Text style={styles.title}>{listing.title}</Text>
@@ -21,12 +34,13 @@ export default function ListingDetailsScreen({ route }) {
         <View style={styles.userContainer}>
           <ListItem
             image={require("../assets/jkrish.jpg")}
-            title="Jaikrish"
-            subTitle="10 Listings"
+            title="Mosh Hamedani"
+            subTitle="5 Listings"
           />
         </View>
+        <ContactSellerForm listing={listing} />
       </View>
-    </View>
+    </KeyboardAvoidingView>
   );
 }
 
@@ -36,7 +50,7 @@ const styles = StyleSheet.create({
   },
   image: {
     width: "100%",
-    height: 300,
+    height: 200,
   },
   price: {
     color: colors.secondary,
@@ -49,6 +63,8 @@ const styles = StyleSheet.create({
     fontWeight: "500",
   },
   userContainer: {
-    marginVertical: 50,
+    marginVertical: 10,
   },
 });
+
+export default ListingDetailsScreen;
